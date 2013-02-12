@@ -30,13 +30,13 @@ everywhere), you can get puppet to tolerate it.  I've attempted to capture the
 necessary certs and config files in the `src/test/resources` directory; you will
 need to add an entry for 'Gatling' to your `/etc/hosts` file (probably just add it to the 127.0.0.1 line).  Then you should be able to run the master with:
 
-    --confdir ./src/test/resources/gatling/recorder/puppetconfig/master/conf --certname gatling
+    --confdir ./src/test/resources/gatling/recorder/puppet/master/conf --certname gatling
 
 When prompted for PEM passphrases just type 'gatling'.
 
 Run the agent with:
 
-    --confdir ./src/test/resources/gatling/recorder/puppetconfig/agent/conf --certname localhost --server Gatling
+    --confdir ./src/test/resources/gatling/recorder/puppet/agent/conf --certname localhost --server Gatling
 
 That should work with the default gatling config.  vardirs are set from inside
 puppet.conf to point into the `./target` directory, but you probably won't
@@ -45,3 +45,20 @@ need anything out of them.
 Once you've completed an agent run, you should see several events / requests /
 responses in the Gatling Recorder GUI.  Click 'Stop and Save' and it will
 generate the code you'll need for repro'ing the HTTPS request/response series.
+
+Load Testing a Webrick Puppet Master
+------------------------------------
+
+Start the puppet master with:
+
+    --confdir ./src/test/resources/gatling/simulation/puppet/conf --certname localhost
+
+Run the load test with:
+
+    mvn gatling:execute
+
+The parameters of the test (number of users, etc.) can be tweaked in the code
+found in `src/test/scala/com/puppetlabs/puppet/master/loadtest/PuppetMasterLoadTest.scala`
+
+The interesting parameters are the arguments to `repeat` (~line 51) and the
+arguments to `users` and `ramp` (last line of code).

@@ -1,0 +1,414 @@
+--- !ruby/object:Puppet::Transaction::Report
+  environment: production
+  time: 2013-02-10 19:31:20.402010 -08:00
+  status: unchanged
+  configuration_version: 1360553490
+  report_format: 3
+  host: localhost
+  resource_statuses: 
+    Filebucket[puppet]: !ruby/object:Puppet::Resource::Status
+      resource: Filebucket[puppet]
+      file: 
+      line: 
+      evaluation_time: 0.000202
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - filebucket
+        - puppet
+      time: 2013-02-10 19:31:30.395913 -08:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Filebucket
+      title: puppet
+      skipped: false
+      failed: false
+    Schedule[monthly]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[monthly]
+      file: 
+      line: 
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - monthly
+      time: 2013-02-10 19:31:30.332397 -08:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: monthly
+      skipped: true
+      failed: false
+    Schedule[never]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[never]
+      file: 
+      line: 
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - never
+      time: 2013-02-10 19:31:30.394613 -08:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: never
+      skipped: true
+      failed: false
+    Schedule[weekly]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[weekly]
+      file: 
+      line: 
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - weekly
+      time: 2013-02-10 19:31:30.396355 -08:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: weekly
+      skipped: true
+      failed: false
+    Schedule[puppet]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[puppet]
+      file: 
+      line: 
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - puppet
+      time: 2013-02-10 19:31:30.397187 -08:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: puppet
+      skipped: true
+      failed: false
+    Schedule[hourly]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[hourly]
+      file: 
+      line: 
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - hourly
+      time: 2013-02-10 19:31:30.333251 -08:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: hourly
+      skipped: true
+      failed: false
+    Schedule[daily]: !ruby/object:Puppet::Resource::Status
+      resource: Schedule[daily]
+      file: 
+      line: 
+      change_count: 0
+      out_of_sync_count: 0
+      tags: 
+        - schedule
+        - daily
+      time: 2013-02-10 19:31:30.331378 -08:00
+      events: []
+      out_of_sync: false
+      changed: false
+      resource_type: Schedule
+      title: daily
+      skipped: true
+      failed: false
+  puppet_version: "3.1.0"
+  logs: 
+    - !ruby/object:Puppet::Util::Log
+      time: 2013-02-10 19:31:20.405060 -08:00
+      message: "node supports formats: b64_zlib_yaml pson raw yaml; using pson"
+      source: Puppet
+      tags: 
+        - debug
+      level: !ruby/sym debug
+    - !ruby/object:Puppet::Util::Log
+      time: 2013-02-10 19:31:21.769512 -08:00
+      message: "Using cached certificate for ca"
+      source: Puppet
+      tags: 
+        - debug
+      level: !ruby/sym debug
+    - !ruby/object:Puppet::Util::Log
+      time: 2013-02-10 19:31:21.770243 -08:00
+      message: "Using cached certificate for localhost"
+      source: Puppet
+      tags: 
+        - debug
+      level: !ruby/sym debug
+    - !ruby/object:Puppet::Util::Log
+      time: 2013-02-10 19:31:22.827024 -08:00
+      message: "Retrieving plugin"
+      source: Puppet
+      tags: 
+        - info
+      level: !ruby/sym info
+    - !ruby/object:Puppet::Util::Log
+      time: 2013-02-10 19:31:22.866422 -08:00
+      message: "file_metadata supports formats: b64_zlib_yaml pson raw yaml; using pson"
+      source: Puppet
+      tags: 
+        - debug
+      level: !ruby/sym debug
+    - !ruby/object:Puppet::Util::Log
+      time: 2013-02-10 19:31:22.963201 -08:00
+      message: "file_metadata supports formats: b64_zlib_yaml pson raw yaml; using pson"
+      source: Puppet
+      tags: 
+        - debug
+      level: !ruby/sym debug
+    - !ruby/object:Puppet::Util::Log
+      time: 2013-02-10 19:31:23.084143 -08:00
+      message: |-
+        Could not evaluate: Could not retrieve information from environment production source(s) puppet://Gatling/plugins
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/util/errors.rb:60:in `fail'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/type/file/source.rb:166:in `metadata'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/type/file/source.rb:112:in `copy_source_values'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/type/file.rb:632:in `retrieve'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/type.rb:1041:in `retrieve_resource'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/transaction/resource_harness.rb:32:in `perform_changes'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/transaction/resource_harness.rb:133:in `evaluate'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/transaction.rb:48:in `apply'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/transaction.rb:83:in `eval_resource'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/transaction.rb:103:in `evaluate'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/util.rb:351:in `thinmark'
+        /home/cprice/.rvm/rubies/ruby-1.8.7-p334/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/util.rb:350:in `thinmark'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/transaction.rb:103:in `evaluate'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/transaction.rb:382:in `traverse'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/transaction.rb:98:in `evaluate'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/resource/catalog.rb:144:in `apply'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/configurer/downloader.rb:14:in `evaluate'
+        /home/cprice/.rvm/rubies/ruby-1.8.7-p334/lib/ruby/1.8/timeout.rb:67:in `timeout'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/configurer/downloader.rb:13:in `evaluate'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/configurer/plugin_handler.rb:15:in `download_plugins'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/configurer.rb:91:in `get_facts'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/configurer.rb:157:in `run'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/agent.rb:45:in `run'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/agent/locker.rb:20:in `lock'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/agent.rb:45:in `run'
+        /home/cprice/.rvm/rubies/ruby-1.8.7-p334/lib/ruby/1.8/sync.rb:230:in `synchronize'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/agent.rb:45:in `run'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/agent.rb:119:in `with_client'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/agent.rb:42:in `run'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/agent.rb:84:in `run_in_fork'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/agent.rb:41:in `run'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/application.rb:179:in `call'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/application.rb:179:in `controlled_run'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/agent.rb:39:in `run'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/application/agent.rb:338:in `onetime'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/application/agent.rb:312:in `run_command'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/application.rb:364:in `run'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/application.rb:456:in `plugin_hook'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/application.rb:364:in `run'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/util.rb:504:in `exit_on_fail'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/application.rb:364:in `run'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/util/command_line.rb:132:in `run'
+        /home/cprice/work/puppet/puppet/git/puppet/lib/puppet/util/command_line.rb:86:in `execute'
+        /home/cprice/work/puppet/puppet/git/puppet/bin/puppet:4
+      source: /File[/home/cprice/work/puppet/gatling_scratch/git/gatling_scratch/target/puppet-agent-vardir/lib]
+      tags: 
+        - err
+        - file
+        - plugin
+      level: !ruby/sym err
+    - !ruby/object:Puppet::Util::Log
+      time: 2013-02-10 19:31:23.086183 -08:00
+      message: "Finishing transaction 69829781435000"
+      source: Puppet
+      tags: 
+        - debug
+      level: !ruby/sym debug
+    - !ruby/object:Puppet::Util::Log
+      time: 2013-02-10 19:31:29.855500 -08:00
+      message: "catalog supports formats: b64_zlib_yaml dot pson raw yaml; using pson"
+      source: Puppet
+      tags: 
+        - debug
+      level: !ruby/sym debug
+    - !ruby/object:Puppet::Util::Log
+      time: 2013-02-10 19:31:30.197372 -08:00
+      message: "Caching catalog for localhost"
+      source: Puppet
+      tags: 
+        - info
+      level: !ruby/sym info
+    - !ruby/object:Puppet::Util::Log
+      time: 2013-02-10 19:31:30.283150 -08:00
+      message: "Creating default schedules"
+      source: Puppet
+      tags: 
+        - debug
+      level: !ruby/sym debug
+    - !ruby/object:Puppet::Util::Log
+      time: 2013-02-10 19:31:30.311375 -08:00
+      message: "Applying configuration version '1360553490'"
+      source: Puppet
+      tags: 
+        - info
+      level: !ruby/sym info
+    - !ruby/object:Puppet::Util::Log
+      time: 2013-02-10 19:31:30.331678 -08:00
+      message: "Skipping device resources because running on a host"
+      source: /Schedule[daily]
+      tags: 
+        - debug
+        - schedule
+        - daily
+      level: !ruby/sym debug
+    - !ruby/object:Puppet::Util::Log
+      time: 2013-02-10 19:31:30.332604 -08:00
+      message: "Skipping device resources because running on a host"
+      source: /Schedule[monthly]
+      tags: 
+        - debug
+        - schedule
+        - monthly
+      level: !ruby/sym debug
+    - !ruby/object:Puppet::Util::Log
+      time: 2013-02-10 19:31:30.333406 -08:00
+      message: "Skipping device resources because running on a host"
+      source: /Schedule[hourly]
+      tags: 
+        - debug
+        - schedule
+        - hourly
+      level: !ruby/sym debug
+    - !ruby/object:Puppet::Util::Log
+      time: 2013-02-10 19:31:30.394940 -08:00
+      message: "Skipping device resources because running on a host"
+      source: /Schedule[never]
+      tags: 
+        - debug
+        - schedule
+        - never
+      level: !ruby/sym debug
+    - !ruby/object:Puppet::Util::Log
+      time: 2013-02-10 19:31:30.396543 -08:00
+      message: "Skipping device resources because running on a host"
+      source: /Schedule[weekly]
+      tags: 
+        - debug
+        - schedule
+        - weekly
+      level: !ruby/sym debug
+    - !ruby/object:Puppet::Util::Log
+      time: 2013-02-10 19:31:30.397346 -08:00
+      message: "Skipping device resources because running on a host"
+      source: /Schedule[puppet]
+      tags: 
+        - debug
+        - schedule
+        - puppet
+      level: !ruby/sym debug
+    - !ruby/object:Puppet::Util::Log
+      time: 2013-02-10 19:31:30.404685 -08:00
+      message: "Finishing transaction 69829780340200"
+      source: Puppet
+      tags: 
+        - debug
+      level: !ruby/sym debug
+    - !ruby/object:Puppet::Util::Log
+      time: 2013-02-10 19:31:30.405105 -08:00
+      message: "Storing state"
+      source: Puppet
+      tags: 
+        - debug
+      level: !ruby/sym debug
+    - !ruby/object:Puppet::Util::Log
+      time: 2013-02-10 19:31:30.405495 -08:00
+      message: "Creating state file /home/cprice/work/puppet/gatling_scratch/git/gatling_scratch/target/puppet-agent-vardir/state/state.yaml"
+      source: Puppet
+      tags: 
+        - info
+      level: !ruby/sym info
+    - !ruby/object:Puppet::Util::Log
+      time: 2013-02-10 19:31:30.451316 -08:00
+      message: "Stored state in 0.05 seconds"
+      source: Puppet
+      tags: 
+        - debug
+      level: !ruby/sym debug
+    - !ruby/object:Puppet::Util::Log
+      time: 2013-02-10 19:31:30.451800 -08:00
+      message: "Finished catalog run in 0.14 seconds"
+      source: Puppet
+      tags: 
+        - notice
+      level: !ruby/sym notice
+  kind: apply
+  metrics: 
+    time: !ruby/object:Puppet::Util::Metric
+      name: time
+      label: Time
+      values: 
+        - - config_retrieval
+          - "Config retrieval"
+          - 0.399770975112915
+        - - total
+          - Total
+          - 0.399972975112915
+        - - filebucket
+          - Filebucket
+          - 0.000202
+    events: !ruby/object:Puppet::Util::Metric
+      name: events
+      label: Events
+      values: 
+        - - failure
+          - Failure
+          - 0
+        - - total
+          - Total
+          - 0
+        - - success
+          - Success
+          - 0
+    resources: !ruby/object:Puppet::Util::Metric
+      name: resources
+      label: Resources
+      values: 
+        - - failed
+          - Failed
+          - 0
+        - - changed
+          - Changed
+          - 0
+        - - scheduled
+          - Scheduled
+          - 0
+        - - total
+          - Total
+          - 7
+        - - restarted
+          - Restarted
+          - 0
+        - - failed_to_restart
+          - "Failed to restart"
+          - 0
+        - - out_of_sync
+          - "Out of sync"
+          - 0
+        - - skipped
+          - Skipped
+          - 6
+    changes: !ruby/object:Puppet::Util::Metric
+      name: changes
+      label: Changes
+      values: 
+        - - total
+          - Total
+          - 0

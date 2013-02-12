@@ -1,1 +1,5 @@
 user-files
+src/test/cache
+src/test/resources/gatling/recorder/puppet/master/conf/manifests
+src/test/resources/gatling/simulation/puppet/master/conf/ssl
+src/test/resources/gatling/simulation/puppet/master/conf/manifests

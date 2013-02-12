@@ -20,14 +20,22 @@
             <name>Excilys Repository</name>
             <url>http://repository.excilys.com/content/groups/public</url>
         </repository>
-    <!--
-      <repository>
-        <id>scala-tools.org</id>
-        <name>Scala-Tools Maven2 Repository</name>
-        <url>http://scala-tools.org/repo-releases</url>
-      </repository>
-      -->
+        <!--
+        <repository>
+          <id>scala-tools.org</id>
+          <name>Scala-Tools Maven2 Repository</name>
+          <url>http://scala-tools.org/repo-releases</url>
+        </repository>
+        -->
     </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>excilys</id>
+            <name>Excilys Repository</name>
+            <url>http://repository.excilys.com/content/groups/public</url>
+        </pluginRepository>
+    </pluginRepositories>
 
     <!--
     <pluginRepositories>
@@ -62,6 +70,19 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+        <dependency>
+            <groupId>com.excilys.ebi.gatling</groupId>
+            <artifactId>gatling-app</artifactId>
+            <version>1.4.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.excilys.ebi.gatling.highcharts</groupId>
+            <artifactId>gatling-charts-highcharts</artifactId>
+            <version>1.4.2</version>
+        </dependency>
+
 
         <!-- Test -->
         <dependency>
@@ -132,12 +153,29 @@
                     <artifactId>appassembler-maven-plugin</artifactId>
                     <version>1.3</version>
                     <configuration>
+                        <extraJvmArguments>-server -XX:+UseThreadPriorities -XX:ThreadPriorityPolicy=42 -Xms512M -Xmx512M -Xmn100M -Xss2M -XX:+HeapDumpOnOutOfMemoryError -XX:+AggressiveOpts -XX:+OptimizeStringConcat -XX:+UseFastAccessorMethods -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:+CMSClassUnloadingEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly</extraJvmArguments>
+                        <binFileExtensions>
+                            <unix>.sh</unix>
+                        </binFileExtensions>
                         <programs>
                             <program>
                                 <mainClass>com.excilys.ebi.gatling.recorder.GatlingRecorder</mainClass>
                                 <name>gatling-recorder</name>
                             </program>
+                            <program>
+                                <mainClass>com.excilys.ebi.gatling.app.Gatling</mainClass>
+                                <name>gatling</name>
+                            </program>
                         </programs>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>com.excilys.ebi.gatling</groupId>
+                    <artifactId>gatling-maven-plugin</artifactId>
+                    <version>1.4.2</version>
+                    <configuration>
+                        <requestBodiesFolder>src/test/resources/gatling/simulation/puppet/master</requestBodiesFolder>
                     </configuration>
                 </plugin>
             </plugins>
