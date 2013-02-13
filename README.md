@@ -62,3 +62,28 @@ found in `src/test/scala/com/puppetlabs/puppet/master/loadtest/PuppetMasterLoadT
 
 The interesting parameters are the arguments to `repeat` (~line 51) and the
 arguments to `users` and `ramp` (last line of code).
+
+Load Testing a Passenger Puppet Master
+--------------------------------------
+
+First: get a clean master/agent run working using the master confdir listed in
+the previous section, to make sure all of the SSL certs are set up correctly.
+Then shut down the master.
+
+As root:
+
+update.rc-d apache2 disable
+service apache2 stop
+ln -s `pwd`/src/test/resources/gatling/simulation/puppet/master/apache2/puppetmaster_vhost /etc/apache2/sites-available
+a2ensite puppetmaster_vhost
+a2enmod ssl
+a2enmod headers
+apt-get install libcurl4-openssl-dev  apache2-prefork-dev libapr1-dev libaprutil1-dev
+gem install rack passenger
+passenger-install-apache2-module
+
+As user:
+
+sudo RUBYLIB=${PUPPET_SRC}/lib:${FACTER_SRC}/lib GATLING_SCRATCH_ROOT=`pwd` apache2ctl start
+
+mvn gatling:execute
