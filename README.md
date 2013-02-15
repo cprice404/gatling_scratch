@@ -11,8 +11,8 @@ load testing.
 To run gatling recorder (proxy for capturing HTTP requests and generating
 an initial gatling scenario):
 
-    mvn appassembler:assemble
-    sh ./target/appassembler/bin/gatling-recorder
+    mvn package
+    sh ./target/appassembler/bin/gatling-recorder.sh
 
 This will bring up a GUI for the Gatling Recorder proxy.  You can pretty
 much leave everything set to the default values (definitely leave the ports!),
@@ -85,5 +85,25 @@ passenger-install-apache2-module
 As user:
 
 sudo RUBYLIB=${PUPPET_SRC}/lib:${FACTER_SRC}/lib GATLING_SCRATCH_ROOT=`pwd` apache2ctl start
+
+mvn gatling:execute
+
+Load Testing a Jetty No-op Server
+---------------------------------
+
+mvn package
+sh ./target/appassembler/bin/jetty-hello-world.sh
+
+In another shell:
+
+mvn gatling:execute
+
+Load Testing a Clojure/Ring No-op Server
+----------------------------------------
+
+mvn package
+sh ./target/appassembler/bin/ring-hello-world.sh
+
+In another shell:
 
 mvn gatling:execute
