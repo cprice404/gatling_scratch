@@ -6,6 +6,7 @@
     <artifactId>gatling_scratch</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>${project.artifactId}</name>
+    <packaging>jar</packaging>
 
     <properties>
         <maven.compiler.source>1.6</maven.compiler.source>
@@ -83,6 +84,12 @@
             <version>1.4.2</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-server</artifactId>
+            <version>8.1.9.v20130131</version>
+        </dependency>
+
 
         <!-- Test -->
         <dependency>
@@ -106,8 +113,8 @@
     </dependencies>
 
     <build>
-        <sourceDirectory>src/main/scala</sourceDirectory>
-        <testSourceDirectory>src/test/scala</testSourceDirectory>
+        <!--<sourceDirectory>src/main/scala</sourceDirectory>-->
+        <!--<testSourceDirectory>src/test/scala</testSourceDirectory>-->
         <plugins>
             <plugin>
                 <groupId>org.scala-tools</groupId>
@@ -129,46 +136,60 @@
                     </execution>
                 </executions>
             </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-surefire-plugin</artifactId>-->
+                <!--<version>2.6</version>-->
+                <!--<configuration>-->
+                    <!--<useFile>false</useFile>-->
+                    <!--<disableXmlReport>true</disableXmlReport>-->
+                    <!--&lt;!&ndash; If you have classpath issue like NoDefClassError,... &ndash;&gt;-->
+                    <!--&lt;!&ndash; useManifestOnlyJar>false</useManifestOnlyJar &ndash;&gt;-->
+                    <!--<includes>-->
+                        <!--<include>**/*Test.*</include>-->
+                        <!--<include>**/*Suite.*</include>-->
+                    <!--</includes>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
+
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.6</version>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>appassembler-maven-plugin</artifactId>
+                <version>1.3</version>
                 <configuration>
-                    <useFile>false</useFile>
-                    <disableXmlReport>true</disableXmlReport>
-                    <!-- If you have classpath issue like NoDefClassError,... -->
-                    <!-- useManifestOnlyJar>false</useManifestOnlyJar -->
-                    <includes>
-                        <include>**/*Test.*</include>
-                        <include>**/*Suite.*</include>
-                    </includes>
+                    <extraJvmArguments>-server -XX:+UseThreadPriorities -XX:ThreadPriorityPolicy=42 -Xms512M -Xmx512M -Xmn100M -Xss2M -XX:+HeapDumpOnOutOfMemoryError -XX:+AggressiveOpts -XX:+OptimizeStringConcat -XX:+UseFastAccessorMethods -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:+CMSClassUnloadingEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly</extraJvmArguments>
+                    <binFileExtensions>
+                        <unix>.sh</unix>
+                    </binFileExtensions>
+                    <programs>
+                        <program>
+                            <mainClass>com.excilys.ebi.gatling.recorder.GatlingRecorder</mainClass>
+                            <name>gatling-recorder</name>
+                        </program>
+                        <program>
+                            <mainClass>com.excilys.ebi.gatling.app.Gatling</mainClass>
+                            <name>gatling</name>
+                        </program>
+                        <program>
+                            <mainClass>com.puppetlabs.http.server.JettyHelloWorldServer</mainClass>
+                            <name>jetty-hello-world</name>
+                        </program>
+                    </programs>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>assemble</id>
+                        <goals>
+                            <goal>assemble</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
+
         </plugins>
 
         <pluginManagement>
             <plugins>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>appassembler-maven-plugin</artifactId>
-                    <version>1.3</version>
-                    <configuration>
-                        <extraJvmArguments>-server -XX:+UseThreadPriorities -XX:ThreadPriorityPolicy=42 -Xms512M -Xmx512M -Xmn100M -Xss2M -XX:+HeapDumpOnOutOfMemoryError -XX:+AggressiveOpts -XX:+OptimizeStringConcat -XX:+UseFastAccessorMethods -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:+CMSClassUnloadingEnabled -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=1 -XX:CMSInitiatingOccupancyFraction=75 -XX:+UseCMSInitiatingOccupancyOnly</extraJvmArguments>
-                        <binFileExtensions>
-                            <unix>.sh</unix>
-                        </binFileExtensions>
-                        <programs>
-                            <program>
-                                <mainClass>com.excilys.ebi.gatling.recorder.GatlingRecorder</mainClass>
-                                <name>gatling-recorder</name>
-                            </program>
-                            <program>
-                                <mainClass>com.excilys.ebi.gatling.app.Gatling</mainClass>
-                                <name>gatling</name>
-                            </program>
-                        </programs>
-                    </configuration>
-                </plugin>
 
                 <plugin>
                     <groupId>com.excilys.ebi.gatling</groupId>
