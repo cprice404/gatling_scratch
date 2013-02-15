@@ -17,6 +17,10 @@
 
     <repositories>
         <repository>
+            <id>Spray</id>
+            <url>http://repo.spray.io</url>
+        </repository>
+        <repository>
             <id>excilys</id>
             <name>Excilys Repository</name>
             <url>http://repository.excilys.com/content/groups/public</url>
@@ -62,6 +66,12 @@
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-compiler</artifactId>
             <version>${scala.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.spray</groupId>
+            <artifactId>spray-can</artifactId>
+            <version>1.0-M7</version>
         </dependency>
 
         <dependency>
@@ -226,6 +236,10 @@
                         <program>
                             <name>ring-hello-world</name>
                             <mainClass>com.puppetlabs.http.server.ring</mainClass>
+                        </program>
+                        <program>
+                            <name>spray-hello-world</name>
+                            <mainClass>com.puppetlabs.http.server.SprayHelloWorld</mainClass>
                         </program>
                     </programs>
                 </configuration>
