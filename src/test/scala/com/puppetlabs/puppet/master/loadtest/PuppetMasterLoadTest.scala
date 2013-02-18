@@ -81,5 +81,5 @@ class PuppetMasterLoadTest extends Simulation {
       .pause(100 milliseconds)
     }
 
-	setUp(scn.users(2500).ramp(100).protocolConfig(httpConf))
+	setUp(scn.users(1000).ramp(100).protocolConfig(httpConf))
 }

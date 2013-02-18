@@ -51,7 +51,7 @@ Load Testing a Webrick Puppet Master
 
 Start the puppet master with:
 
-    --confdir ./src/test/resources/gatling/simulation/puppet/conf --certname localhost
+    --confdir ./src/test/resources/gatling/simulation/puppet/master/conf --certname localhost
 
 Run the load test with:
 
@@ -72,38 +72,50 @@ Then shut down the master.
 
 As root:
 
-update.rc-d apache2 disable
-service apache2 stop
-ln -s `pwd`/src/test/resources/gatling/simulation/puppet/master/apache2/puppetmaster_vhost /etc/apache2/sites-available
-a2ensite puppetmaster_vhost
-a2enmod ssl
-a2enmod headers
-apt-get install libcurl4-openssl-dev  apache2-prefork-dev libapr1-dev libaprutil1-dev
-gem install rack passenger
-passenger-install-apache2-module
+    update.rc-d apache2 disable
+    service apache2 stop
+    ln -s `pwd`/src/test/resources/gatling/simulation/puppet/master/apache2/puppetmaster_vhost /etc/apache2/sites-available
+    a2ensite puppetmaster_vhost
+    a2enmod ssl
+    a2enmod headers
+    apt-get install libcurl4-openssl-dev  apache2-prefork-dev libapr1-dev libaprutil1-dev
+    gem install rack passenger
+    passenger-install-apache2-module
 
 As user:
 
-sudo RUBYLIB=${PUPPET_SRC}/lib:${FACTER_SRC}/lib GATLING_SCRATCH_ROOT=`pwd` apache2ctl start
+    sudo RUBYLIB=${PUPPET_SRC}/lib:${FACTER_SRC}/lib GATLING_SCRATCH_ROOT=`pwd` apache2ctl start
 
-mvn gatling:execute
+    mvn gatling:execute
 
 Load Testing a Jetty No-op Server
 ---------------------------------
 
-mvn package
-sh ./target/appassembler/bin/jetty-hello-world.sh
+    mvn package
+    sh ./target/appassembler/bin/jetty-hello-world.sh
 
 In another shell:
 
-mvn gatling:execute
+    mvn gatling:execute
 
 Load Testing a Clojure/Ring No-op Server
 ----------------------------------------
 
-mvn package
-sh ./target/appassembler/bin/ring-hello-world.sh
+    mvn package
+    sh ./target/appassembler/bin/ring-hello-world.sh
 
 In another shell:
 
-mvn gatling:execute
+    mvn gatling:execute
+
+
+Load Testing an Akka/Spray No-op Server
+----------------------------------------
+
+    mvn package
+    sh ./target/appassembler/bin/spray-hello-world.sh
+
+In another shell:
+
+    mvn gatling:execute
+
